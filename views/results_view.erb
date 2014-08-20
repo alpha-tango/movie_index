@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Search Results</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+  <h1>The following results were found for your search <%= params[:query] %></h1>
+
+    <ul>
+      <% @movies_byname.each do |movie| %>
+        <% if movie[:title].downcase.include?(params[:query].downcase) %>
+          <li> <a href="/movies/<%=movie[:id]%>"> <%= movie[:title] %> </a></li>
+        <% end %>
+      <% end %>
+    </ul>
+
+  </body>
+
+</html>
